@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import { useAgenda } from "../context/AgendaDados"
 import ListaPessoas from './ListaPessoas';
 
-function Pessoas(props) {
-
+export default function Pessoas() {
   //gerador de ids
   let currentId = 0;
   const generateId = () => {
@@ -16,11 +16,8 @@ function Pessoas(props) {
   const [valorContribuicao, setContribuicao] = useState();
   //pessoa
   const [pessoa, setPessoa] = useState(pessoaInicial);
-  // let currentId = 1;
-  // const generateId = () => {
-  //   currentId++;
-  //   return currentId;
-  // };
+
+  const {agenda, setAgenda} = useAgenda();
 
   const handleChange = (event) => {
     debugger
@@ -32,28 +29,21 @@ function Pessoas(props) {
       nome: event.target.nome.value,
       contribuicao: event.target.contribuicao.value
     };
+
     const newArray = [...pessoa];
     newArray.push(novoItemArray);
     setPessoa(newArray);
   }
 
     return (
-      // <section>
-      //   <ul>
-      //     <h1>Pessoas</h1> 
-      //     <button onClick={(event) => adicionarPessoas(props)}>ADD</button>
-      //   </ul>
-      // </section>
       <>
+      <div>{agenda.nome}aaaaaaaa</div>
       <form onSubmit={handleChange}>
       <input type="text" placeholder="Nome" name="nome" value={valorNome}/>
       <input type="number" placeholder="Contribuicao" name="contribuicao" value={valorContribuicao}/>
-      
       <input type="submit" value="Submit"/>
     </form>
     <ListaPessoas pessoas={pessoa}/>
     </>
     );
   }
-  
-  export default Pessoas;

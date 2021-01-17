@@ -1,17 +1,19 @@
 import React from 'react'
+import CriarChurras from './CriarChurras';
+import DetalhesChurrasco from './DetalhesChurrasco';
 import '../style/Modal.css'
 
-function Modal(props) {
+export default function Modal(props) {
     const onClose = (event) => {
-      debugger
       props.onClose && props.onClose(event)
     }
     return (
        <>
        {props.show ? 
        <div className="modal" id="modal">
-        <h2>Modal Window</h2>
-        <div className="content">{props.children} {props.reference}aaa</div>
+        <h2>{props.reference}</h2>
+        <div className="content">{props.reference === 'Agenda' && <CriarChurras></CriarChurras> }</div>
+        <div className="content">{props.reference === 'AgendaChurras' && <DetalhesChurrasco selected={props.select}></DetalhesChurrasco> }</div>
         <div className="actions">
           <button className="toggle-button" onClick={onClose}>
             close
@@ -20,9 +22,6 @@ function Modal(props) {
       </div>
        :
       null }
-      
        </>
     )
 }
-
-export default Modal

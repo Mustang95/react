@@ -1,20 +1,20 @@
 import React, {useState} from 'react'
 
-function ListaPessoas(props) {
+export default function ListaPessoas(props) {
     return ( 
     <> 
     <section>
-        <h1>Lista Pessoas</h1>
-        {/* {props.Pessoas.map(pessoa => (
+        <h1>Lista Pessoas1</h1>
+        {props.pessoas.map(pessoa => (
                 <ul>
                     <li key={pessoa.id}>
-                        {pessoa.nome}
+                        {pessoa.nome} -
+                        {pessoa.contribuicao}
+                        <button>DELETE</button>
                     </li>
                 </ul>
-            ))} */}
+            ))}
     </section> 
     </>
     )
 }
-
-export default ListaPessoas

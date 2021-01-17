@@ -1,0 +1,30 @@
+.simple {
+  width: 200px!important;
+  margin: 20px auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.fade
+{
+        opacity:1;
+}
+.fade:hover
+{
+        opacity:0.8;
+}
+.grow:hover
+{
+        -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        transform: scale(1.05);
+}
+.fancy {
+  width: 200px;
+  margin: 20px auto;
+  padding: 1px;
+  border: solid blue 10px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
