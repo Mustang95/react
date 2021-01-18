@@ -1,49 +1,79 @@
-import React, { useState } from 'react';
-import { useAgenda } from "../context/AgendaDados"
-import ListaPessoas from './ListaPessoas';
+import React, { useState } from "react";
+import { useAgenda } from "../context/AgendaDados";
+import ListaPessoas from "./ListaPessoas";
 
-export default function Pessoas() {
-  //gerador de ids
-  let currentId = 0;
-  const generateId = () => {
-    currentId++;
-    return currentId;
-  };
-  //body pessoa 
-  const pessoaInicial = [{id: generateId(), nome: '', contribuicao: ''}]
+//gerador de ids
+let currentId = 0;
+const generateId = () => {
+  currentId++;
+  return currentId;
+};
+
+export default function CriaPessoas(props) {
+  //body pessoa
+  const pessoaInicial = [
+    { id: generateId(), nome: "", contribuicao: "", bebida: false },
+  ];
   //set
-  const [valorNome, setNome] = useState();
-  const [valorContribuicao, setContribuicao] = useState();
-  //pessoa
-  const [pessoa, setPessoa] = useState(pessoaInicial);
+  const [valorNome] = useState();
 
-  const {agenda, setAgenda} = useAgenda();
+  const [valorBebida, setBebida] = useState(false);
 
-  const handleChange = (event) => {
-    debugger
+  const { agenda, setAgenda } = useAgenda();
+  const changeState = (event) => {
+    setBebida(event.target.checked)
+  }
+  const handleChange = (event, props) => {
     event.preventDefault();
-    console.log(event)
-    const novoItemArray = 
-    { 
+
+    const newArray = [...agenda];
+    const agendaChanged = newArray.find(
+      (elem) => elem.id === props.agendaSelected.id
+    );
+    
+    let contribuicao
+    if(valorBebida === true){
+      contribuicao = agendaChanged.bebida
+    } else {
+      contribuicao = agendaChanged.valor
+    }
+    const novoItemArray = {
       id: generateId(),
       nome: event.target.nome.value,
-      contribuicao: event.target.contribuicao.value
+      contribuicao: contribuicao,
+      bebida: event.target.bebida.value,
     };
 
-    const newArray = [...pessoa];
-    newArray.push(novoItemArray);
-    setPessoa(newArray);
-  }
 
-    return (
-      <>
-      <div>{agenda.nome}aaaaaaaa</div>
-      <form onSubmit={handleChange}>
-      <input type="text" placeholder="Nome" name="nome" value={valorNome}/>
-      <input type="number" placeholder="Contribuicao" name="contribuicao" value={valorContribuicao}/>
-      <input type="submit" value="Submit"/>
-    </form>
-    <ListaPessoas pessoas={pessoa}/>
+    agendaChanged.amount =
+      agendaChanged.amount + parseInt(novoItemArray.contribuicao);
+
+    if (agendaChanged.pessoas === undefined) {
+      agendaChanged.pessoas = [new Object(novoItemArray)];
+    } else {
+      agendaChanged.pessoas.push(new Object(novoItemArray));
+    }
+    setAgenda(newArray);
+  };
+
+  return (
+    <>
+      <form onSubmit={(event) => handleChange(event, props)} className="Card">
+        <label for="nome">Nome do participante</label>
+        <input type="text" placeholder="Nome" name="nome" value={valorNome} />
+
+        <div>
+          <label for="bebida">Bebida incluso?</label>
+          <input
+            type="checkbox"
+            placeholder="Bebida incluso"
+            name="bebida"
+            value={valorBebida}
+            onClick={(event) => changeState(event)}/>
+        </div>
+        <input type="submit" value="Submit" />
+      </form>
+      <ListaPessoas agenda={props.agendaSelected} />
     </>
-    );
-  }
+  );
+}

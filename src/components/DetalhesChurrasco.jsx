@@ -4,11 +4,12 @@ import CriaPessoas from './CriaPessoas';
 
 export default function DetalhesChurrasco(props) {
     const {agenda} = useAgenda();
-    const agendaSelected = agenda.find(elem => elem.id === props.selected)
+    
+    const agendaSelected = agenda.find(elem => elem.id === props.id)
     return (
         <>
-        <li key={agendaSelected.id}>
-          <div >
+        <article key={agendaSelected.id}>
+          <div>
               {agendaSelected.data.toString()}
           </div>
           <div>
@@ -17,9 +18,11 @@ export default function DetalhesChurrasco(props) {
           <div>
              {agendaSelected.desc} <span>.....</span> {agendaSelected.obs} 
           </div>
-        <h5>Pessoas {agendaSelected.pessoas != undefined ? agendaSelected.pessoas.length : 0}</h5>
-        </li>
-        <CriaPessoas></CriaPessoas>
+          <div>
+             VALOR S/ BEBIDA: {agendaSelected.valor} <span>.....</span> VALOR C/ BEBIDA: {agendaSelected.bebida} 
+          </div>
+        </article>
+        <CriaPessoas agendaSelected={agendaSelected}></CriaPessoas>
         </>
     )
 }

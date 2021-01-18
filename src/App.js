@@ -1,23 +1,20 @@
 import React from 'react';
 import AgendaProvider from './context/AgendaDados'
+import useWindowDimensions from './hooks/useWindowDimensions';
 import Agenda from './components/Agenda';
 
 import './style/App.css';
 
 export default function App() {
+  const { height, width } = useWindowDimensions();
   return (
     <>
     <AgendaProvider>
-      <div className="grid-container">
-        <div className="header"> TESTE
+      <div className="grid-container" style={{height: (height - 100)}} >
+        <div className="header">
         </div>
-        <div className="main"> <h4>Agenda Churras</h4>
+        <div className="main" id="overflowTest">
           <Agenda />
-        </div>
-        <div className="right"> TESTE
-          {/* detalhes do churrasco qtd pessoas  e dinheiro arrecadado */}
-        </div>
-        <div className="footer"> TESTE
         </div>
       </div>
     </AgendaProvider>

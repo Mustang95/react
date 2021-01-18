@@ -3,15 +3,15 @@ import React, { createContext, useState, useContext } from 'react'
 const AgendaDadosContext = createContext()
 
 export default function AgendaDadosProvider({ children }) {
-    const agendaInitialState = 
-    [ { id: 0,
-      nome: 'Churrasco da paçoca',
-      data: '2021-07-07',
-      desc: 'muito bom',
-      obs: 'vegetarianos bem vindos',
-      valorSugerido: '30.00',
-      bebida: false
-    } ];
+    const agendaInitialState = [] 
+    // [ { id: 0,
+    //   nome: 'Churrasco da paçoca',
+    //   data: '2021-07-07',
+    //   desc: 'muito bom',
+    //   obs: 'vegetarianos bem vindos',
+    //   valorSugerido: '30.00',
+    //   bebida: false
+    // } ];
     const [agenda, setAgenda] = useState(agendaInitialState);
     
     return (
