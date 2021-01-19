@@ -1,26 +1,26 @@
 import React, { useState, useReducer } from "react";
-
+import { GoInfo } from "react-icons/go";
+import { BsPeople } from "react-icons/bs";
+import { RiMoneyDollarCircleFill } from "react-icons/ri";
+import { GiBarbecue } from "react-icons/gi";
 import { useAgenda } from "../context/AgendaDados";
 import Modal from "./Modal";
 import "./ListaChurrasco.css";
 
 export default function ListaChurrasco(props) {
   const [show, setShow] = useState(false);
-  const [amount, setamount] = useState(0);
   const [refName, setRefName] = useState("Agenda");
   const { agenda } = useAgenda();
 
-  const showModal = (event, item) => {
-    //pegar o item.id para abrir os dados corretos na modal
+  const showModal = (item) => {
+    debugger
     let refName = "";
-    console.log("ListChurrasco:" + item)
     const aux = !show;
     if (item != undefined) {
       refName = { nome: "AgendaChurras", id: item.id };
     } else {
       refName = 'Agenda'
     }
-    console.log("ListChurrasco RefName:" + refName)
     setShow(aux);
     setRefName(refName);
   };
@@ -35,31 +35,29 @@ export default function ListaChurrasco(props) {
           select={refName.id}
         />
         {agenda.map((item) => (
-          <article className="fancy fade grow " key={item.id}>
-            <div>{item.data.toString()}</div>
-            <div>{item.nome}</div>
-            <div>
-              {item.desc} 
+          <article className="article fancy fade grow " key={item.id}>
+            <div className="article header-title">{item.data}</div>
+            <div className="article title">{item.nome}</div>
+            <div className="article excerpt demo-1">
+              {item.desc}
             </div>
-            <button onClick={(event) => showModal(event, item)}>
-              Detalhes do Churras
-            </button>
-            <h5>
-              Pessoas {item.pessoas != undefined ? item.pessoas.length : 0}
-            </h5>
-            <div>
-               {item.obs}
+              <GoInfo size={70} className="cursorPointer" color="black" onClick={() => showModal(item)}/>
+            <div className="article footer row">
+            <div className="column">
+              <BsPeople color="yellow"/> {item.pessoas != undefined ? item.pessoas.length : 0}
             </div>
-            <div>
-               {item.amount}
+            <div className="column">
+               <RiMoneyDollarCircleFill color="yellow"/> R$ {item.amount}
+            </div>
             </div>
           </article>
         ))}
-        <article className="fancy fade ">
-          <button className="fillSpace" onClick={(event) => showModal(event)}>
-            Chama Modal
-          </button>
+        {/* transformar baixo em component */}
+        <article className="fancy fade centralize changeColor" onClick={() => showModal()}>
+            <GiBarbecue size={70} color="yellow" />
+            <div>Adicionar Churras</div>
         </article>
+
       </div>
     </>
   );

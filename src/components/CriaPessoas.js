@@ -8,26 +8,21 @@ const generateId = () => {
   currentId++;
   return currentId;
 };
-
+// formPessoas
 export default function CriaPessoas(props) {
-  //body pessoa
-  const pessoaInicial = [
-    { id: generateId(), nome: "", contribuicao: "", bebida: false },
-  ];
-  //set
+  
   const [valorNome] = useState();
-
   const [valorBebida, setBebida] = useState(false);
-
   const { agenda, setAgenda } = useAgenda();
+
   const changeState = (event) => {
     setBebida(event.target.checked)
   }
   const handleChange = (event, props) => {
     event.preventDefault();
 
-    const newArray = [...agenda];
-    const agendaChanged = newArray.find(
+    const novaAgenda = [...agenda];
+    const agendaChanged = novaAgenda.find(
       (elem) => elem.id === props.agendaSelected.id
     );
     
@@ -37,28 +32,28 @@ export default function CriaPessoas(props) {
     } else {
       contribuicao = agendaChanged.valor
     }
-    const novoItemArray = {
+    const novaPessoa = {
       id: generateId(),
       nome: event.target.nome.value,
       contribuicao: contribuicao,
       bebida: event.target.bebida.value,
     };
 
-
     agendaChanged.amount =
-      agendaChanged.amount + parseInt(novoItemArray.contribuicao);
+      agendaChanged.amount + parseInt(novaPessoa.contribuicao);
 
     if (agendaChanged.pessoas === undefined) {
-      agendaChanged.pessoas = [new Object(novoItemArray)];
+      agendaChanged.pessoas = [new Object(novaPessoa)];
     } else {
-      agendaChanged.pessoas.push(new Object(novoItemArray));
+      agendaChanged.pessoas.push(new Object(novaPessoa));
     }
-    setAgenda(newArray);
+    setAgenda(novaAgenda);
   };
 
   return (
     <>
       <form onSubmit={(event) => handleChange(event, props)} className="Card">
+
         <label for="nome">Nome do participante</label>
         <input type="text" placeholder="Nome" name="nome" value={valorNome} />
 
@@ -69,8 +64,10 @@ export default function CriaPessoas(props) {
             placeholder="Bebida incluso"
             name="bebida"
             value={valorBebida}
-            onClick={(event) => changeState(event)}/>
+            onClick={(event) => changeState(event)}
+          />
         </div>
+
         <input type="submit" value="Submit" />
       </form>
       <ListaPessoas agenda={props.agendaSelected} />

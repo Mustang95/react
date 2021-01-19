@@ -2,7 +2,6 @@ import React from 'react';
 import AgendaProvider from './context/AgendaDados'
 import useWindowDimensions from './hooks/useWindowDimensions';
 import Agenda from './components/Agenda';
-
 import './style/App.css';
 
 export default function App() {
@@ -11,7 +10,7 @@ export default function App() {
     <>
     <AgendaProvider>
       <div className="grid-container" style={{height: (height - 100)}} >
-        <div className="header">
+        <div className="header"> Agenda de Churrasco
         </div>
         <div className="main" id="overflowTest">
           <Agenda />

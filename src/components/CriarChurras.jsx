@@ -6,27 +6,36 @@ const generateId = () => {
   currentId++;
   return currentId;
 };
-
+const formatDate = (data) => {
+  let aux = data
+  aux = aux.substr(5,5)
+  const newDate = aux.replace("-", "/")
+  return newDate
+}
+// mudar de nome para formChurrasco
 export default function CriarChurras(props) {
-  //set
+  
   const [valorNome] = useState();
   const [valorData] = useState();
   const [valorDesc] = useState();
   const [valorObs] = useState();
   const [valorSugerido] = useState();
   const [valorBebida] = useState();
-  //
+  
   const { agenda, setAgenda } = useAgenda();
 
-  //set new item on agenda
+  
   const handleChange = (event) => {
+    debugger
     event.preventDefault();
-    console.log(event)
-    const novoItemArray = 
+    
+    const dataFormatada = formatDate(event.target.data.value)
+
+    const novoAgendamentoChurrasco = 
     { 
       id: generateId(),
       nome: event.target.nome.value,
-      data: event.target.data.value,
+      data: dataFormatada,
       desc: event.target.desc.value,
       obs: event.target.obs.value,
       valor: event.target.valor.value,
@@ -34,11 +43,12 @@ export default function CriarChurras(props) {
       amount: 0
     };
     
-
-    const newArray = [...agenda];
-    newArray.push(novoItemArray);
-    setAgenda(newArray);
+    const novaAgenda = [...agenda];
+    novaAgenda.push(novoAgendamentoChurrasco);
+    setAgenda(novaAgenda);
   }
+
+  
 
     return (
       <>

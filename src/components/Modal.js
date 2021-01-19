@@ -4,10 +4,11 @@ import DetalhesChurrasco from './DetalhesChurrasco';
 import '../style/Modal.css'
 
 export default function Modal(props) {
-  console.log("Modal recebe:" + props.reference)
+
     const onClose = (event) => {
       props.onClose && props.onClose(event)
     }
+
     return (
        <>
        {props.show ? 
