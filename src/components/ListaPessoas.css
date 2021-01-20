@@ -1,0 +1,36 @@
+/*
+ *  scrollbar STYLE
+ */
+
+ #styleScrollbar::-webkit-scrollbar-track
+ {
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+   border-radius: 10px;
+   background-color: transparent;
+ }
+ 
+ #styleScrollbar::-webkit-scrollbar
+ {
+   width: 7px;
+   background-color: transparent;
+ }
+ 
+ #styleScrollbar::-webkit-scrollbar-thumb
+ {
+   border-radius: 10px;
+   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+   background-color: #c7c7c7;
+ }
+
+.modal-dialog{
+    overflow-y: initial !important
+}
+.modal-body{
+height: 250px;
+overflow-y: auto;
+}
+
+.backgroundColor {
+  background-color:#5f5d524b;
+  border-radius: 30px;
+}

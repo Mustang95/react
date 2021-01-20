@@ -13,7 +13,6 @@ export default function ListaChurrasco(props) {
   const { agenda } = useAgenda();
 
   const showModal = (item) => {
-    debugger
     let refName = "";
     const aux = !show;
     if (item != undefined) {
@@ -35,19 +34,19 @@ export default function ListaChurrasco(props) {
           select={refName.id}
         />
         {agenda.map((item) => (
-          <article className="article fancy fade grow " key={item.id}>
+          <article className="article fancy fade grow " key={item.id} onClick={() => showModal(item)}>
             <div className="article header-title">{item.data}</div>
             <div className="article title">{item.nome}</div>
             <div className="article excerpt demo-1">
               {item.desc}
             </div>
-              <GoInfo size={70} className="cursorPointer" color="black" onClick={() => showModal(item)}/>
+              <GoInfo size={70} className="cursorPointer" color="black" />
             <div className="article footer row">
             <div className="column">
-              <BsPeople color="yellow"/> {item.pessoas != undefined ? item.pessoas.length : 0}
+              <BsPeople size={30} color="yellow"/> {item.pessoas != undefined ? item.pessoas.length : 0}
             </div>
             <div className="column">
-               <RiMoneyDollarCircleFill color="yellow"/> R$ {item.amount}
+               <RiMoneyDollarCircleFill size={30} color="yellow"/> R$ {item.amount}
             </div>
             </div>
           </article>

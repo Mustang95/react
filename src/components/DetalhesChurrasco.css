@@ -1,0 +1,12 @@
+.content {
+  max-width: 100%;
+}
+
+.backgroundColor {
+    background-color:#ffd736ab;
+    border-radius: 30px;
+}
+
+.marginTop {
+    margin-top: 0.2rem;
+}

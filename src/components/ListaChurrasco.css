@@ -14,7 +14,7 @@
 
 .fancy {
         width: 320px;
-        height: 320px;
+        height: 360px;
         margin: 20px auto;
         padding: 1px;
         -webkit-box-sizing: border-box;
@@ -45,15 +45,16 @@
                 'main main main'
                 'footer footer footer';
         grid-gap: 15px;
-        background-color: #fcfcfc;
+        /* background-color: #FFD836; */
         padding: 10px;
 }
 
 .article {
-        background: #e2e2e2;
+        background: #F1F1F1;
         border-radius: 2px;
         box-shadow: 0 2px 4px rgba(#000, 0.2);
         transition: 0.3s ease;
+        z-index: 2;
 }
 
 .article .category {
@@ -68,12 +69,20 @@
 }
 
 .article .excerpt {
-        overflow: hidden;
         height: 70px;
+        /*  */
+        display: block;
         display: -webkit-box;
+        max-width: 100%;
+        /* height: 43px; */
+        margin: 0 auto;
+        /* font-size: 14px; */
+        /* line-height: 1; */
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
+        overflow: hidden;
         text-overflow: ellipsis;
+        /*  */
         margin: 20px;
         color: rgb(0, 0, 0);
         line-height: 1.5rem;
@@ -101,23 +110,12 @@
         margin: 10px;
 }
 
-.column {
-        float: left;
-        width: 50%;
-}
-
-.row:after {
-        content: "";
-        display: table;
-        clear: both;
-}
-
 .cursorPointer {
         cursor: pointer;
 }
 
 .centralize {
-        background: rgb(196, 196, 196);
+        background:#F1F1F1;
         display: flex;
         flex-direction: column;
         justify-content: center;

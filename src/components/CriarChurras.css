@@ -1,0 +1,18 @@
+.fillBackground {
+    background-color: #ffffff9c;
+}
+
+#form input:nth-of-type(1) {flex-grow: 1;}
+
+textarea {
+    padding: 10px;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}

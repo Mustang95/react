@@ -15,7 +15,7 @@ export default function Modal(props) {
        <div className="modal" id="modal">
         <h2>{props.reference === 'Agenda' ? 'Criando Churrasco' : 'Detalhes do Churrasco'}</h2>
         <div className="content">{props.reference === 'Agenda' && <CriarChurras></CriarChurras> }</div>
-        <div className="content">{props.reference === 'AgendaChurras' && <DetalhesChurrasco id={props.select}></DetalhesChurrasco> }</div>
+        <div >{props.reference === 'AgendaChurras' && <DetalhesChurrasco id={props.select}></DetalhesChurrasco> }</div>
         <div className="actions">
           <button className="toggle-button" onClick={onClose}>
             close
