@@ -1,18 +1,8 @@
 import React, { useState } from "react";
 import { useAgenda } from "../context/AgendaDados";
+import { formatDate, generateId } from "../helpers.js";
 import "./CriarChurras.css";
-//gerador de ids
-let currentId = 0;
-const generateId = () => {
-  currentId++;
-  return currentId;
-};
-const formatDate = (data) => {
-  let aux = data;
-  aux = aux.substr(5, 5);
-  const newDate = aux.replace("-", "/");
-  return newDate;
-};
+
 // mudar de nome para formChurrasco
 export default function CriarChurras(props) {
   const [valorNome] = useState();
@@ -23,10 +13,10 @@ export default function CriarChurras(props) {
   const [valorBebida] = useState();
 
   const { agenda, setAgenda } = useAgenda();
+  // const { formatDate, setFormatDate} = useFormatDate();
 
   const handleChange = (event) => {
     event.preventDefault();
-
     const dataFormatada = formatDate(event.target.data.value);
 
     const novoAgendamentoChurrasco = {
@@ -55,10 +45,11 @@ export default function CriarChurras(props) {
               placeholder="Nome"
               name="nome"
               value={valorNome}
-              maxlength="20"
+              maxLength="20"
+              required
             />
             <div className="column">
-              <label for="bebida">Motivo</label>
+              <label htmlFor="bebida">Motivo</label>
             </div>
           </div>
           {/*  */}
@@ -68,9 +59,10 @@ export default function CriarChurras(props) {
               placeholder="Data"
               name="data"
               value={valorData}
+              required
             />
             <div className="column">
-              <label for="bebida">Quando</label>
+              <label htmlFor="bebida">Quando</label>
             </div>
           </div>
           {/*  */}
@@ -79,12 +71,26 @@ export default function CriarChurras(props) {
               type="text"
               placeholder="Descrição breve"
               name="desc"
-              rows="4" cols="30"
+              rows="4"
+              cols="30"
               value={valorDesc}
-              maxlength="140"
+              maxLength="140"
             />
             <div className="column">
-              <label for="bebida">Descrição para o participantes</label>
+              <label htmlFor="bebida">Descrição para o participantes</label>
+            </div>
+          </div>
+          {/*  */}
+          <div className="column">
+            <input
+              type="text"
+              placeholder="Valor p/ pessoa sugerido"
+              name="valor"
+              value={valorSugerido}
+              required
+            />
+            <div className="column">
+              <label htmlFor="bebida">Valor sem bebidas</label>
             </div>
           </div>
           {/*  */}
@@ -92,23 +98,12 @@ export default function CriarChurras(props) {
             <input
               type="number"
               placeholder="Valor p/ pessoa sugerido"
-              name="valor"
-              value={valorSugerido}
-            />
-            <div className="column">
-              <label for="bebida">Valor sem bebidas</label>
-            </div>
-          </div>
-          {/*  */}
-          <div className="column">
-            <input
-              type="number"
-              placeholder="Bebida inclusa?"
               name="bebida"
               value={valorBebida}
+              required
             />
             <div className="column">
-              <label for="bebida">Valor com bebida incluso</label>
+              <label htmlFor="bebida">Valor com bebida incluso</label>
             </div>
           </div>
           {/*  */}
@@ -117,18 +112,19 @@ export default function CriarChurras(props) {
               type="text"
               placeholder="Observações"
               name="obs"
-              rows="3" cols="30"
+              rows="3"
+              cols="30"
               value={valorObs}
-              maxlength="90"
+              maxLength="90"
             />
             <div className="column">
-              <label for="bebida">Observações</label>
+              <label htmlFor="bebida">Observações</label>
             </div>
           </div>
         </div>
-          <div >
-            <input type="submit" value="Submit" />
-          </div>
+        <div>
+          <input type="submit" value="Submit" />
+        </div>
       </form>
     </>
   );

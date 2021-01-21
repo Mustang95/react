@@ -1,6 +1,11 @@
 import React from "react";
 import { useAgenda } from "../context/AgendaDados";
+import { MdDeleteForever } from "react-icons/md";
+import { BiCircle } from "react-icons/bi";
+import { BsPeople } from "react-icons/bs";
+import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import "./ListaPessoas.css";
+import { formatReal } from "../helpers.js";
 
 export default function ListaPessoas(props) {
   const { agenda, setAgenda } = useAgenda();
@@ -18,32 +23,49 @@ export default function ListaPessoas(props) {
       1
     );
     setAgenda(novaAgenda);
-  };
+  }
+
   return (
     <>
-    <div className="modal-dialog ">
-
-        <h2>
-          Lista Pessoas (
-          {props.agenda.pessoas != undefined ? props.agenda.pessoas.length : 0})
-        </h2>
-      {/* <section> */}
-        <div className="modal-body backgroundColor" id="styleScrollbar">
-          {props.agenda.pessoas != undefined &&
-            props.agenda.pessoas.map((pessoa) => (
-              <ul>
-                <li key={pessoa.id}>
-                  {pessoa.nome} -{pessoa.contribuicao} -
-                  {pessoa.bebida === true ? "Bebida incluso" : "Sem Bebida"}
-                  <button onClick={() => removePessoa(pessoa, props)}>
-                    DELETE
-                  </button>
-                </li>
-              </ul>
-            ))}
+      <div className="modal-dialog ">
+        <div className="row backgroundColorHeaders">
+          <div className="column">
+            Pessoas (
+              <BsPeople size={30} color="black"/> {props.agenda.pessoas != undefined
+              ? props.agenda.pessoas.length
+              : 0}
+            )
+          </div>
+          <div className="column">
+            Arrecadado(
+          <RiMoneyDollarCircleFill size={30} color="black"/> {formatReal(props.agenda.amount)})
+           </div>
         </div>
-      {/* </section> */}
-            </div>
+
+        <div className="modal-body" id="styleScrollbar">
+          <table>
+            {props.agenda.pessoas != undefined &&
+              props.agenda.pessoas.map((pessoa) => (
+                <tr key={pessoa.id}>
+                  <td>
+                    <BiCircle size={15} />
+                  </td>
+                  <td>{pessoa.nome}</td>
+                  <td>{pessoa.contribuicao}</td>
+                  <td>
+                    {pessoa.bebida === "true" ? "C/ Bebida" : "S/ Bebida"}
+                  </td>
+                  <td>
+                    <MdDeleteForever
+                      size={25}
+                      onClick={() => removePessoa(pessoa, props)}
+                    />
+                  </td>
+                </tr>
+              ))}
+          </table>
+        </div>
+      </div>
     </>
   );
 }

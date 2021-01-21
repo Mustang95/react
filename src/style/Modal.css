@@ -7,7 +7,7 @@
   top: 5%;
   left: 11%;
   /* transform: translate(-50%, -50%); */
-  /* padding: 1em; */
+  padding: 0.3em;
   border: 1px solid #ccc;
   transition: 1.1s ease-out;
   box-shadow: -2rem 2rem 2rem rgba(0, 0, 0, 0.2);
@@ -16,7 +16,7 @@
   opacity: 1;
   /* transition: all 0.3s; */
   visibility: visible;
-  z-index: 999; 
+  z-index: 300; 
 }
 
 
@@ -39,26 +39,54 @@
     offset-path: none;
   }
 }
+.modal .header {
+  padding: 0.8rem;
+  margin: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  display: block;
+  font-size: 1.17em;
+}
 .modal h2 {
   border-bottom: 1px solid #ccc;
   padding: 1rem;
   margin: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.modal h3 {
+  border-bottom: 1px solid #9a9a9a;
+  padding: 0.6rem;
+  margin: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 .modal .content {
   padding: 0.2rem;
 }
 .modal .actions {
-  background: #ffffff00;
+  background: #07070700;
   padding: 0.5rem 1rem;
 }
 .modal .actions button {
   border: 0;
-  background: #78f89f;
+  background: #000000;
   border-radius: 5px;
   padding: 0.5rem 1rem;
   font-size: 0.8rem;
   line-height: 1;
 }
+
+.modal .closeButton {
+  text-align: justify;
+}
+
+.modal .slimLineWidth {
+  width: 90%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 #centered-toggle-button {
   position: absolute;
 }

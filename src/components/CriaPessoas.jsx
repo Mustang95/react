@@ -1,14 +1,8 @@
 import React, { useState } from "react";
 import { useAgenda } from "../context/AgendaDados";
 import ListaPessoas from "./ListaPessoas";
-import { AiFillCheckCircle } from "react-icons/ai";
+import { generateId } from "../helpers.js";
 
-//gerador de ids
-let currentId = 0;
-const generateId = () => {
-  currentId++;
-  return currentId;
-};
 // formPessoas
 export default function CriaPessoas(props) {
   const [valorNome] = useState();
@@ -25,7 +19,6 @@ export default function CriaPessoas(props) {
     const agendaChanged = novaAgenda.find(
       (elem) => elem.id === props.agendaSelected.id
     );
-
     let contribuicao;
     if (valorBebida === true) {
       contribuicao = agendaChanged.bebida;
@@ -40,7 +33,7 @@ export default function CriaPessoas(props) {
     };
 
     agendaChanged.amount =
-      agendaChanged.amount + parseInt(novaPessoa.contribuicao);
+      agendaChanged.amount + parseInt(parseInt(novaPessoa.contribuicao));
 
     if (agendaChanged.pessoas === undefined) {
       agendaChanged.pessoas = [new Object(novaPessoa)];
@@ -58,15 +51,16 @@ export default function CriaPessoas(props) {
           className="backgroundColor"
         >
           <div className="column">
-            <input
-              type="text"
-              placeholder="Nome"
-              name="nome"
-              value={valorNome}
-            />
-            <div className="column">
-              <label for="nome">Nome</label>
-            </div>
+              <input
+                type="text"
+                placeholder="Nome"
+                name="nome"
+                value={valorNome}
+                required
+              />
+              <div className="column">
+                <label for="nome">Nome</label>
+              </div>
           </div>
 
           <div className="column">
@@ -84,11 +78,11 @@ export default function CriaPessoas(props) {
                 <span class="checkmark"></span>
               </label>
             </div>
-            <input type="submit" value="Ok" className="sizeButton">
-            </input>
+            <input type="submit" value="Ok" className="sizeButton"></input>
           </div>
         </form>
       </div>
+      <hr className="slimLineWidth" />
       <ListaPessoas agenda={props.agendaSelected} />
     </>
   );

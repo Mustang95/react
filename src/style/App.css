@@ -98,16 +98,22 @@ body {
   width: 50%;
 }
 
+.column3 {
+  float: left;
+  width: 33.3%;
+}
+
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
+/* input */
 
 input[type=text], select {
   width: 50%;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin: 0px 0;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -127,7 +133,7 @@ input[type=number] {
 input[type=date] {
   width: 50%;
   padding: 12px 20px;
-  margin: 8px 0;
+  margin: 0px 0;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -147,4 +153,12 @@ input[type=submit] {
 
 input[type=submit]:hover {
   background-color: #464646;
+}
+
+
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }
