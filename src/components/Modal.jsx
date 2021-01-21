@@ -2,10 +2,10 @@ import React from "react";
 import CriarChurras from "./CriarChurras";
 import DetalhesChurrasco from "./DetalhesChurrasco";
 import { IoMdClose } from "react-icons/io";
-import "../style/Modal.css";
+import "./style/Modal.css";
 
 export default function Modal(props) {
-  const onClose = (event) => {
+  function onClose(event) {
     props.onClose && props.onClose(event);
   };
 

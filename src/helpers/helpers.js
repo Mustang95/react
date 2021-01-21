@@ -5,10 +5,9 @@ export const generateId = () => {
   return currentId;
 };
 export const formatDate = (data) => {
-  let aux = data;
-  aux = aux.substr(5, 5);
-  const newDate = aux.replace("-", "/");
-  return newDate;
+  const dia = data.substr(8)
+  const mes = data.substr(5,2)
+  return `${dia}/${mes}`
 };
 export function formatReal(num){
     return new Intl.NumberFormat("pt-BR", {

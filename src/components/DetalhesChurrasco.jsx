@@ -2,8 +2,8 @@ import React from "react";
 import { useAgenda } from "../context/AgendaDados";
 import CriaPessoas from "./CriaPessoas";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
-import { formatReal } from "../helpers.js";
-import "./DetalhesChurrasco.css";
+import { formatReal } from "../helpers/helpers.js";
+import "./style/DetalhesChurrasco.css";
 
 export default function DetalhesChurrasco(props) {
   const { agenda } = useAgenda();
@@ -34,10 +34,6 @@ export default function DetalhesChurrasco(props) {
               {agendaSelected.desc}
               <hr className="slimLineWidth" />
               {agendaSelected.obs}
-            </div>
-
-            <div className="content">
-              {formatReal(agendaSelected.amount)}
             </div>
 
           </div>

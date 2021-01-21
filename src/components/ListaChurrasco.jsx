@@ -1,11 +1,10 @@
-import React, { useState, useReducer } from "react";
-import { GoInfo } from "react-icons/go";
+import React, { useState } from "react";
 import { BsPeople } from "react-icons/bs";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import { GiBarbecue } from "react-icons/gi";
 import { useAgenda } from "../context/AgendaDados";
 import Modal from "./Modal";
-import "./ListaChurrasco.css";
+import "./style/ListaChurrasco.css";
 
 export default function ListaChurrasco(props) {
   const [show, setShow] = useState(false);
@@ -15,7 +14,7 @@ export default function ListaChurrasco(props) {
   const showModal = (item) => {
     let refName = "";
     const aux = !show;
-    if (item != undefined) {
+    if (item !== undefined) {
       refName = { nome: "AgendaChurras", id: item.id };
     } else {
       refName = 'Agenda'
@@ -40,10 +39,9 @@ export default function ListaChurrasco(props) {
             <div className="article excerpt demo-1">
               {item.desc}
             </div>
-              <GoInfo size={70} className="cursorPointer" color="black" />
             <div className="article footer row">
             <div className="column">
-              <BsPeople size={30} color="yellow"/> {item.pessoas != undefined ? item.pessoas.length : 0}
+              <BsPeople size={30} color="yellow"/> {item.pessoas !== undefined ? item.pessoas.length : 0}
             </div>
             <div className="column">
                <RiMoneyDollarCircleFill size={30} color="yellow"/> R$ {item.amount}
@@ -51,7 +49,7 @@ export default function ListaChurrasco(props) {
             </div>
           </article>
         ))}
-        {/* transformar baixo em component */}
+        
         <article className="fancy fade centralize changeColor" onClick={() => showModal()}>
             <GiBarbecue size={70} color="yellow" />
             <div>Adicionar Churras</div>

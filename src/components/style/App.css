@@ -15,7 +15,7 @@ body {
   width: 100%;
   height: 30%;
   background: #FFD836;
-  background-image: url("../Barbecue.svg");
+  background-image: url("../../helpers/Barbecue.svg");
   z-index: 1;
 }
 
@@ -24,16 +24,8 @@ body {
   z-index: 2;
 }
 
-.menu {
-  grid-area: menu;
-}
-
 .main {
   grid-area: main;
-}
-
-.right {
-  grid-area: right;
 }
 
 .footer {
@@ -51,10 +43,7 @@ body {
 }
 
 .grid-container>div {
-  /* background-color: rgb(255, 255, 255); */
   text-align: center;
-  /* padding: 20px 0; */
-  /* font-size: 20px; */
 }
 
 /*
@@ -82,13 +71,11 @@ body {
  }
 
 .scrollbar {
-  /* padding: 15px; */
   width: 99%;
   height: 100%;
   overflow: scroll;
   overflow-x: hidden;
   z-index: 2;
-  /* border: 1px solid #ccc; */
 }
 
 /* row column */
@@ -108,6 +95,7 @@ body {
   display: table;
   clear: both;
 }
+
 /* input */
 
 input[type=text], select {
@@ -154,8 +142,6 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: #464646;
 }
-
-
 
 label {
   display: block;

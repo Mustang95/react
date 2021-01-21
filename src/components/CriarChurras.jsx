@@ -1,32 +1,31 @@
 import React, { useState } from "react";
 import { useAgenda } from "../context/AgendaDados";
-import { formatDate, generateId } from "../helpers.js";
-import "./CriarChurras.css";
+import { formatDate, generateId } from "../helpers/helpers.js";
+import "./style/CriarChurras.css";
 
 // mudar de nome para formChurrasco
 export default function CriarChurras(props) {
-  const [valorNome] = useState();
-  const [valorData] = useState();
-  const [valorDesc] = useState();
-  const [valorObs] = useState();
-  const [valorSugerido] = useState();
-  const [valorBebida] = useState();
+  const [valorNome, setNome] = useState("");
+  const [valorData, setData] = useState("");
+  const [valorDesc, setDesc] = useState("");
+  const [valorObs, setObs] = useState("");
+  const [valorSemBebida, setValorSemBebida] = useState("");
+  const [valorComBebida, setVlorComBebida] = useState("");
 
   const { agenda, setAgenda } = useAgenda();
-  // const { formatDate, setFormatDate} = useFormatDate();
 
-  const handleChange = (event) => {
+  function handleChange(event) {
     event.preventDefault();
-    const dataFormatada = formatDate(event.target.data.value);
+    const dataFormatada = formatDate(valorData);
 
     const novoAgendamentoChurrasco = {
       id: generateId(),
-      nome: event.target.nome.value,
+      nome: valorNome,
       data: dataFormatada,
-      desc: event.target.desc.value,
-      obs: event.target.obs.value,
-      valor: event.target.valor.value,
-      bebida: event.target.bebida.value,
+      desc: valorDesc,
+      obs: valorObs,
+      valor: valorSemBebida,
+      bebida: valorComBebida,
       amount: 0,
     };
 
@@ -34,6 +33,14 @@ export default function CriarChurras(props) {
     novaAgenda.push(novoAgendamentoChurrasco);
     setAgenda(novaAgenda);
   };
+
+  function onChangeNumberValues(input){
+    if(input.value < 0) return
+    if(input.name === "semBebida")
+      setValorSemBebida(input.value)
+    else
+      setVlorComBebida(input.value)
+  }
 
   return (
     <>
@@ -47,6 +54,7 @@ export default function CriarChurras(props) {
               value={valorNome}
               maxLength="20"
               required
+              onChange={(event) => setNome(event.target.value)}
             />
             <div className="column">
               <label htmlFor="bebida">Motivo</label>
@@ -60,6 +68,7 @@ export default function CriarChurras(props) {
               name="data"
               value={valorData}
               required
+              onChange={(event) => setData(event.target.value)}
             />
             <div className="column">
               <label htmlFor="bebida">Quando</label>
@@ -75,6 +84,7 @@ export default function CriarChurras(props) {
               cols="30"
               value={valorDesc}
               maxLength="140"
+              onChange={(event) => setDesc(event.target.value)}
             />
             <div className="column">
               <label htmlFor="bebida">Descrição para o participantes</label>
@@ -83,14 +93,15 @@ export default function CriarChurras(props) {
           {/*  */}
           <div className="column">
             <input
-              type="text"
+              type="number"
               placeholder="Valor p/ pessoa sugerido"
-              name="valor"
-              value={valorSugerido}
+              name="semBebida"
+              value={valorSemBebida}
               required
+              onChange={(event) => onChangeNumberValues(event.target)}
             />
             <div className="column">
-              <label htmlFor="bebida">Valor sem bebidas</label>
+              <label htmlFor="semBebida">Valor sem bebidas</label>
             </div>
           </div>
           {/*  */}
@@ -98,12 +109,13 @@ export default function CriarChurras(props) {
             <input
               type="number"
               placeholder="Valor p/ pessoa sugerido"
-              name="bebida"
-              value={valorBebida}
+              name="comBebida"
+              value={valorComBebida}
               required
+              onChange={(event) => onChangeNumberValues(event.target)}
             />
             <div className="column">
-              <label htmlFor="bebida">Valor com bebida incluso</label>
+              <label htmlFor="comBebida">Valor com bebida incluso</label>
             </div>
           </div>
           {/*  */}
@@ -116,6 +128,7 @@ export default function CriarChurras(props) {
               cols="30"
               value={valorObs}
               maxLength="90"
+              onChange={(event) => setObs(event.target.value)}
             />
             <div className="column">
               <label htmlFor="bebida">Observações</label>
