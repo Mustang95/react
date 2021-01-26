@@ -3,71 +3,70 @@
  */
 
 #styleScrollbar::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  background-color: transparent;
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	border-radius: 10px;
+	background-color: transparent;
 }
 
 #styleScrollbar::-webkit-scrollbar {
-  width: 7px;
-  background-color: transparent;
+	width: 7px;
+	background-color: transparent;
 }
 
 #styleScrollbar::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  background-color: #c7c7c7;
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	background-color: #c7c7c7;
 }
 
 .modal-dialog {
-  overflow-y: initial !important;
+	overflow-y: initial !important;
 }
 .modal-body {
-  height: 250px;
-  overflow-y: auto;
+	height: 250px;
+	overflow-y: auto;
 }
 
 .backgroundColor {
-  background-color: #5f5d524b;
-  margin: 5px;
+	background-color: #5f5d524b;
+	margin: 5px;
 }
 
 .listFormat {
-  margin-top: 0px;
-  margin-left: 27px;
-  margin-right: 27px;
+	margin-top: 0px;
+	margin-left: 27px;
+	margin-right: 27px;
 }
 
 .backgroundColorHeaders {
-  background-color: #ffd836;
-  background-image: url("../../helpers/Barbecue.svg");
-  border-radius: 30px;
-  margin-left: 7px;
-  margin-right: 7px;
-  margin: 5px;
+	background-color: #ffd836;
+	background-image: url('../../helpers/Barbecue.svg');
+	border-radius: 30px;
+	margin-left: 7px;
+	margin-right: 7px;
+	margin: 5px;
 }
 
 ul.circle {
-  list-style-type: circle;
+	list-style-type: circle;
 }
 ul li::marker {
-  color: black;
-  font-size: 1.5em;
+	color: black;
+	font-size: 1.5em;
 }
-
-
 
 /* table */
 
 table {
-  border: none;
-  border-collapse: collapse;
-  width: 90%;
-  margin-left: 2rem;
+	border: none;
+	border-collapse: collapse;
+	width: 90%;
+	margin-left: 2rem;
 }
 
-td, th {
-  border-bottom: 1px solid #9a9a9a;
-  text-align: left;
-  padding: 2px;
+td,
+th {
+	border-bottom: 1px solid #9a9a9a;
+	text-align: left;
+	padding: 2px;
 }
