@@ -5,7 +5,7 @@ import Agenda from './Agenda'
 import './style/App.css'
 
 export default function App() {
-	const { height /*width*/ } = useWindowDimensions()
+	const { height } = useWindowDimensions()
 	return (
 		<>
 			<AgendaProvider>
@@ -14,7 +14,7 @@ export default function App() {
 					<div className='main scrollbar' id='styleScrollbar'>
 						<Agenda />
 					</div>
-					<div className='footer' id='background'></div>
+					<div className='footer' id='background' />
 				</div>
 			</AgendaProvider>
 		</>
